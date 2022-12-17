@@ -1,0 +1,19 @@
+class Solution:
+    def stoneGame(self, piles: List[int]) -> bool:
+        def f(self,piles,i,n):
+            if i==n-1:
+                return piles[i]
+            if i>=n:
+                return 0
+            left=piles[i]-f(self,piles,i+1,n)
+            right=piles[n-1]-f(self,piles,i,n-1)
+            return max(left,right)
+
+
+
+        n=len(piles)
+        ans=f(self,piles,0,n)
+        if ans>0:
+            return True
+        else:
+            return False
